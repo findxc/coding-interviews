@@ -1,0 +1,28 @@
+{
+  "name": "coding-interviews",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liu-xiao-cui/coding-interviews.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liu-xiao-cui/coding-interviews/issues"
+  },
+  "homepage": "https://github.com/liu-xiao-cui/coding-interviews#readme",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.1.0",
+    "jest": "^24.9.0",
+    "prettier": "1.18.2"
+  }
+}
