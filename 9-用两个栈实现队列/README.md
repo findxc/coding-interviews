@@ -6,42 +6,51 @@
 
 栈是先进后出，队列是先进先出，如何用两个栈来实现一个队列的功能？
 
-思路：
-
-```js
-if (当前节点有右子节点) {
-  中序遍历的下一个节点是右子节点或者右子节点的最左子节点
-} else if(当前节点是父节点的左子节点) {
-  中序遍历的下一个节点是父节点
-} else {
-  去不断找当前节点的父节点，直到这个父节点是它父节点的左子节点，中序遍历的下一个节点就是这个父节点的父节点
-}
-```
+思路：在插入新值的时候，如果能把这个新值放在栈底部，就能实现先进先出了。
 
 代码如下：
 
 ```js
-export const getNextMiddleNode = treeNode => {
-  if (treeNode.right) {
-    let node = treeNode.right
-    while (node.left) {
-      node = node.left
-    }
-    return node
+class Stack {
+  constructor() {
+    this.arr = []
   }
 
-  if (treeNode.parent && treeNode.parent.left == treeNode) {
-    return treeNode.parent
+  push(value) {
+    this.arr.push(value)
+    return value
   }
 
-  let node = treeNode
-  while (node) {
-    if (node.parent && node.parent.left === node) {
-      node = node.parent
-      break
+  pop() {
+    if (this.arr.length) {
+      return this.arr.pop()
     }
-    node = node.parent
+    return undefined
   }
-  return node
+}
+
+// 先进先出
+// 在插入节点时，把这个节点放在栈的最底部，这样在删除节点时就可以先进先出啦
+export class Queue {
+  constructor() {
+    this.stack = new Stack()
+    this.tmpStack = new Stack()
+  }
+
+  appendTail(value) {
+    let node
+    while ((node = this.stack.pop())) {
+      this.tmpStack.push(node)
+    }
+    this.stack.push(value)
+    while ((node = this.tmpStack.pop())) {
+      this.stack.push(node)
+    }
+    return value
+  }
+
+  deleteHead() {
+    return this.stack.pop()
+  }
 }
 ```
