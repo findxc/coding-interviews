@@ -11,30 +11,29 @@
 代码如下：
 
 ```js
-export default (reg, str) => {
-  const run = (reg, str) => {
-    if (reg === '' && str === '') {
-      return true
-    }
-
-    if (reg[0] === '.') {
-      return run(reg.slice(1), str.slice(1))
-    }
-
-    if (reg[1] === '*') {
-      if (reg[0] === str[0]) {
-        return run(reg, str.slice(1))
-      }
-      return run(reg.slice(2), str)
-    }
-
-    if (reg[0] === str[0]) {
-      return run(reg.slice(1), str.slice(1))
-    }
-
-    return false
+export default (head, k) => {
+  if (!head || k <= 0) {
+    return null
   }
 
-  return run(reg, str)
+  let firstNode = head
+  let i = 1
+  while (i < k && firstNode) {
+    firstNode = firstNode.next
+    i++
+  }
+
+  // i < k 说明链表总节点数小于 k
+  if (i < k || !firstNode) {
+    return null
+  }
+
+  let secondNode = head
+  while (firstNode.next) {
+    firstNode = firstNode.next
+    secondNode = secondNode.next
+  }
+
+  return secondNode
 }
 ```
