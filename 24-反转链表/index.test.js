@@ -1,4 +1,4 @@
-import reverse from './index'
+import { recursiveReverse as reverse } from './index'
 
 class Node {
   constructor({ value, next }) {

@@ -6,10 +6,10 @@
 
 其实就是 a --> b --> c --> d 给反转为 a <-- b <-- c <-- d 。
 
-代码如下：
+循环解法代码如下：
 
 ```js
-export default head => {
+export const reverse = head => {
   if (!head || !head.next) {
     return head
   }
@@ -25,5 +25,25 @@ export default head => {
   }
 
   return node1
+}
+```
+
+递归解法代码如下：
+
+```js
+export const recursiveReverse = (node, next = null) => {
+  if (!node) {
+    return null
+  }
+
+  let nextNode = node.next
+
+  node.next = next
+
+  if (!nextNode) {
+    return node
+  }
+
+  return recursiveReverse(nextNode, node)
 }
 ```

@@ -1,4 +1,4 @@
-export default head => {
+export const reverse = head => {
   if (!head || !head.next) {
     return head
   }
@@ -14,4 +14,20 @@ export default head => {
   }
 
   return node1
+}
+
+export const recursiveReverse = (node, next = null) => {
+  if (!node) {
+    return null
+  }
+
+  let nextNode = node.next
+
+  node.next = next
+
+  if (!nextNode) {
+    return node
+  }
+
+  return recursiveReverse(nextNode, node)
 }
