@@ -4,27 +4,29 @@ var pathSum = function (root, sum) {
   }
 
   const results = []
-  let path = [root.val]
+  let path = []
 
   const walk = (node, total) => {
     const { val, left, right } = node
     total = total - val
+    path.push(node.val)
+
     if (!left && !right) {
       if (total === 0) {
         results.push([...path])
       }
+      path.pop()
       return
     }
+
     if (left) {
-      path.push(left.val)
       walk(left, total)
-      path.pop()
     }
     if (right) {
-      path.push(right.val)
       walk(right, total)
-      path.pop()
     }
+
+    path.pop()
   }
 
   walk(root, sum)
