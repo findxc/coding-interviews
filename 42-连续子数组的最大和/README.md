@@ -1,6 +1,6 @@
 ## 连续子数组的最大和
 
-[面试题 40. 最小的 k 个数](https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/)
+[53. 最大子序和](https://leetcode-cn.com/problems/maximum-subarray/)
 
 呃，要求时间复杂度是 O(n) 。
 
